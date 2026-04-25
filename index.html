@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Limon — Cloud & DevOps Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f6;
+    --surface: #f0ede8;
+    --border: #e2ddd8;
+    --text: #1a1a1a;
+    --muted: #555550;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    padding: 48px 24px;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 36px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-size: clamp(42px, 8vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+  }
+
+  h1 span {
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.8;
+  }
+
+  .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .contact-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .contact-pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* SECTIONS */
+  section {
+    margin-bottom: 48px;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* SUMMARY */
+  .summary {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #94a3b8;
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .skill-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 16px;
+    border-radius: 2px;
+  }
+
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .skill-list {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 2;
+    list-style: none;
+  }
+
+  .skill-list li::before {
+    content: '→ ';
+    color: var(--accent);
+  }
+
+  /* PROJECTS */
+  .project {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px;
+    margin-bottom: 12px;
+    border-radius: 2px;
+    transition: border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px; height: 100%;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .project:hover {
+    border-color: rgba(0,212,160,0.3);
+  }
+
+  .project:hover::before {
+    opacity: 1;
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .project-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .project-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+    opacity: 0.7;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tech-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid rgba(0,212,160,0.2);
+    padding: 3px 10px;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
+
+  /* CERTS */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  .cert {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 18px;
+    border-radius: 2px;
+  }
+
+  .cert-status {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .cert-status.earned { color: var(--accent); }
+  .cert-status.progress { color: #f59e0b; }
+
+  .cert-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .cert-provider {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* EXPERIENCE */
+  .exp {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp:last-child { border-bottom: none; }
+
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    padding-top: 3px;
+    line-height: 1.6;
+  }
+
+  .exp-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .exp-company {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .exp-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header { animation: fadeUp 0.5s ease both; }
+  section:nth-child(1) { animation: fadeUp 0.5s 0.1s ease both; }
+  section:nth-child(2) { animation: fadeUp 0.5s 0.2s ease both; }
+  section:nth-child(3) { animation: fadeUp 0.5s 0.3s ease both; }
+  section:nth-child(4) { animation: fadeUp 0.5s 0.4s ease both; }
+  section:nth-child(5) { animation: fadeUp 0.5s 0.5s ease both; }
+
+  @media (max-width: 600px) {
+    .exp { grid-template-columns: 1fr; gap: 4px; }
+    .exp-date { padding-top: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="tag">Available for remote roles · Finland</div>
+    <h1>Limon<br><span>Billal</span></h1>
+    <p class="subtitle">
+      Junior Cloud & DevOps Engineer<br>
+      Targeting remote-first teams in NL · DE · UK · IE
+    </p>
+    <div class="contacts">
+      <a class="contact-pill" href="https://github.com/billal4232">github.com/billal4232</a>
+      <a class="contact-pill" href="https://limonlab.online">limonlab.online</a>
+      <a class="contact-pill" href="#">Finland (Permanent Resident)</a>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-label">Profile</div>
+    <p class="summary">
+      Self-taught cloud and DevOps engineer building production-grade infrastructure on AWS with Terraform. 
+      Completed hands-on projects covering multi-tier VPC architecture, ALB + ASG auto-scaling, private S3 with CloudFront delivery, 
+      RDS, SSM access, remote state management, and custom domain HTTPS setup — all applied, debugged live, and destroyed. 
+      Strong Linux foundation across all 12 system administration domains with real incident simulation on a live Hetzner VPS. 
+      Currently pursuing AWS Solutions Architect Associate. Targeting Junior Cloud Engineer, Cloud Ops, or DevOps roles at remote-first companies.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-label">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Cloud</div>
+        <ul class="skill-list">
+          <li>AWS EC2 / VPC</li>
+          <li>S3 / CloudFront</li>
+          <li>ALB / ASG</li>
+          <li>RDS / Route53</li>
+          <li>IAM / SSM</li>
+          <li>CloudWatch / ACM</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Infrastructure as Code</div>
+        <ul class="skill-list">
+          <li>Terraform</li>
+          <li>Reusable modules</li>
+          <li>Remote state (S3)</li>
+          <li>DynamoDB locking</li>
+          <li>Multi-provider config</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Linux & Systems</div>
+        <ul class="skill-list">
+          <li>Ubuntu 24.04</li>
+          <li>Systemd / Nginx</li>
+          <li>Bash scripting</li>
+          <li>SSH / fail2ban</li>
+          <li>Disk & storage mgmt</li>
+          <li>Process management</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Tools & Stack</div>
+        <ul class="skill-list">
+          <li>Git / GitHub</li>
+          <li>AWS CLI v2</li>
+          <li>MySQL / php-fpm</li>
+          <li>WordPress</li>
+          <li>VS Code</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Projects</div>
+
+    <div class="project">
+      <div class="project-header">
+        <div class="project-name">terraform-infra</div>
+        <a class="project-link" href="https://github.com/billal4232/terraform-infra">github →</a>
+      </div>
+      <p class="project-desc">
+        Multi-tier AWS infrastructure built and debugged entirely from scratch. VPC with public/private subnets, NAT Gateway, 
+        ALB + ASG with Launch Template and nginx user data, EC2 in private subnet with SSM access (no bastion), 
+        RDS MySQL 8.0, S3 assets bucket, CloudWatch alarms, and Route53 A record. Remote state via S3 + DynamoDB locking. 
+        Debugged live: security group blocks, 502/503 ALB errors, ASG vs target group health check mismatch.
+      </p>
+      <div class="tech-tags">
+        <span class="tech-tag">Terraform</span>
+        <span class="tech-tag">VPC</span>
+        <span class="tech-tag">ALB + ASG</span>
+        <span class="tech-tag">EC2</span>
+        <span class="tech-tag">RDS MySQL</span>
+        <span class="tech-tag">SSM</span>
+        <span class="tech-tag">CloudWatch</span>
+        <span class="tech-tag">Route53</span>
+        <span class="tech-tag">S3 Remote State</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <div class="project-name">terraform-s3-cloudfront</div>
+        <a class="project-link" href="https://github.com/billal4232/terraform-s3-cloudfront">github →</a>
+      </div>
+      <p class="project-desc">
+        Static website hosting on private S3 with CloudFront OAC authentication. Bucket policy locked to specific distribution 
+        via AWS:SourceArn condition. Custom error responses for 403/404. Debugged AccessDenied errors from incorrect OAC setup 
+        and missing default_root_object. Verified caching behavior via x-cache headers.
+      </p>
+      <div class="tech-tags">
+        <span class="tech-tag">Terraform</span>
+        <span class="tech-tag">S3</span>
+        <span class="tech-tag">CloudFront</span>
+        <span class="tech-tag">OAC</span>
+        <span class="tech-tag">IAM Policy</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <div class="project-name">terraform-cv-site</div>
+        <a class="project-link" href="https://github.com/billal4232">github →</a>
+      </div>
+      <p class="project-desc">
+        Custom domain HTTPS static site at cv.limonlab.online. Extends CloudFront + S3 pattern with ACM certificate 
+        provisioning in us-east-1, DNS validation via Route53, multi-provider Terraform config, and alias A record 
+        pointing to CloudFront distribution.
+      </p>
+      <div class="tech-tags">
+        <span class="tech-tag">Terraform</span>
+        <span class="tech-tag">ACM</span>
+        <span class="tech-tag">CloudFront</span>
+        <span class="tech-tag">Route53</span>
+        <span class="tech-tag">S3</span>
+        <span class="tech-tag">Multi-provider</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <div class="project-name">Hetzner VPS — Live Linux Lab</div>
+        <a class="project-link" href="https://limonlab.online">limonlab.online →</a>
+      </div>
+      <p class="project-desc">
+        Self-managed Ubuntu 24.04 VPS on Hetzner (Helsinki) running nginx, php-fpm, MySQL, and two live WordPress sites. 
+        Configured SSH with ed25519 keys, separate nginx logs per site, and documented real production incidents: 
+        php-fpm exhaustion, disk full from log bloat, inode exhaustion, SSL expiry, MySQL slow queries, OOM events.
+      </p>
+      <div class="tech-tags">
+        <span class="tech-tag">Linux</span>
+        <span class="tech-tag">Nginx</span>
+        <span class="tech-tag">MySQL</span>
+        <span class="tech-tag">WordPress</span>
+        <span class="tech-tag">SSH</span>
+        <span class="tech-tag">Systemd</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Certifications</div>
+    <div class="cert-grid">
+      <div class="cert">
+        <div class="cert-status earned">✓ Earned</div>
+        <div class="cert-name">AWS Certified Cloud Practitioner</div>
+        <div class="cert-provider">Amazon Web Services</div>
+      </div>
+      <div class="cert">
+        <div class="cert-status progress">⟳ In Progress</div>
+        <div class="cert-name">AWS Solutions Architect Associate</div>
+        <div class="cert-provider">Amazon Web Services</div>
+      </div>
+      <div class="cert">
+        <div class="cert-status progress">⟳ Planned</div>
+        <div class="cert-name">HashiCorp Terraform Associate</div>
+        <div class="cert-provider">HashiCorp</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Experience</div>
+    <div class="exp">
+      <div class="exp-date">2024 —<br>Present</div>
+      <div>
+        <div class="exp-title">Self-Directed Cloud & DevOps Study</div>
+        <div class="exp-company">Independent · Finland</div>
+        <p class="exp-desc">
+          4 hours daily of structured learning alongside full-time work. Completed 12-domain Linux curriculum, 
+          Bash scripting, AWS Cloud Practitioner, and hands-on Terraform projects. 
+          Building toward Junior Cloud/DevOps Engineer role at remote-first companies in Europe.
+        </p>
+      </div>
+    </div>
+    <div class="exp">
+      <div class="exp-date">Current</div>
+      <div>
+        <div class="exp-title">Facilities Worker</div>
+        <div class="exp-company">Finland</div>
+        <p class="exp-desc">
+          Full-time employment demonstrating reliability, consistency, and work ethic while pursuing a career transition into cloud engineering.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Limon Billal · limonlab.online</span>
+    <span>Open to remote · NL · DE · UK · IE</span>
+  </footer>
+
+</div>
+</body>
+</html>
