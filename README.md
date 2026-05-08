@@ -1,4 +1,4 @@
-# terraform-cv-cloudfront
+# aws-static-site
 
 Static CV website hosted on private S3, delivered via CloudFront with a custom domain and HTTPS.
 
